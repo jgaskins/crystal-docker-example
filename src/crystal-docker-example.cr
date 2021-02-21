@@ -51,8 +51,8 @@ class HealthCheck
 end
 
 http = HTTP::Server.new([
-  HealthCheck.new("/health"),
   HTTP::LogHandler.new,
+  HealthCheck.new("/health"),
   HTTP::CompressHandler.new,
   Armature::Session::RedisStore.new(
     key: "app_session",
