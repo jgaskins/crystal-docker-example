@@ -1,0 +1,19 @@
+name: crystal-docker-example
+version: 0.1.0
+
+authors:
+  - Jamie Gaskins <jgaskins@hey.com>
+
+targets:
+  crystal-docker-example:
+    main: src/crystal-docker-example.cr
+
+dependencies:
+  interro:
+    github: jgaskins/interro
+  armature:
+    github: jgaskins/armature
+
+crystal: 0.36.1
+
+license: MIT
