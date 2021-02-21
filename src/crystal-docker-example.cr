@@ -35,7 +35,23 @@ class App
   end
 end
 
+class HealthCheck
+  include HTTP::Handler
+
+  def initialize(@path : String)
+  end
+
+  def call(context)
+    if context.request.resource == @path
+      context.response << "All good!"
+    else
+      call_next context
+    end
+  end
+end
+
 http = HTTP::Server.new([
+  HealthCheck.new("/health"),
   HTTP::LogHandler.new,
   HTTP::CompressHandler.new,
   Armature::Session::RedisStore.new(
